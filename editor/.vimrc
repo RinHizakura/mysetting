@@ -15,7 +15,6 @@ call plug#end()
 " general vim setting "
 syntax on
 set number
-set nowrap
 set ruler
 set showcmd
 set showmatch
