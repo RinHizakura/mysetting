@@ -1,0 +1,11 @@
+[user]
+	name = RinHizakura
+        email = s921975628@gmail.com
+
+[sendemail]
+        from = s921975628@gmail.com
+        smtpserver = smtp.gmail.com
+        smtpserverport = 587
+        smtpencryption = tls
+        smtpuser = s921975628@gmail.com
+        smtppass = ??
