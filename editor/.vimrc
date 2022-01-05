@@ -15,6 +15,7 @@ set number
 set ruler
 set showcmd
 set showmatch
+set hlsearch
 set shiftwidth=4
 
 " gruvbox colorscheme "
