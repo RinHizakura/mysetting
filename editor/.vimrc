@@ -32,6 +32,7 @@ let g:airline#extensions#branch#enabled=1
 
 " highlight without searching
 :nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+:nnoremap <F9> :so types.vim<CR>
 
 if has('autocmd') && v:version > 701
     " rusty-tags "
