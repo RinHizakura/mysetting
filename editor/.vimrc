@@ -30,6 +30,9 @@ match RedundantSpaces /\s\+$/
 let g:airline_theme='simple'
 let g:airline#extensions#branch#enabled=1
 
+" highlight without searching
+:nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
 if has('autocmd') && v:version > 701
     " rusty-tags "
     autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
