@@ -16,6 +16,7 @@ set ruler
 set showcmd
 set showmatch
 set hlsearch
+set expandtab
 set shiftwidth=4
 set list
 set listchars=tab:!·,trail:·
