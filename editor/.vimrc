@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'ackyshake/VimCompletesMe'
+Plug 'basilgor/vim-autotags'
 call plug#end()
 
 " general vim setting "
