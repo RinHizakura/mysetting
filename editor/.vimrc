@@ -39,9 +39,6 @@ let g:airline#extensions#branch#enabled=1
 :nnoremap <F9> :so types.vim<CR>
 
 if has('autocmd') && v:version > 701
-    " rusty-tags "
-    autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
-
     " keyword highlighting "
     augroup todo
         autocmd!
