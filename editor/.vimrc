@@ -34,9 +34,12 @@ match RedundantSpaces /\s\+$/
 let g:airline_theme='simple'
 let g:airline#extensions#branch#enabled=1
 
-" highlight without searching
+" highlight without searching "
 :nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 :nnoremap <F9> :so types.vim<CR>
+
+" add ctag from current path (for Rust)"
+:nnoremap <F10> :set tags+=./tags,tags;<CR>
 
 if has('autocmd') && v:version > 701
     " keyword highlighting "
