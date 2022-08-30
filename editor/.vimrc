@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ackyshake/VimCompletesMe'
 Plug 'basilgor/vim-autotags'
 Plug 'vim-scripts/Mark'
+Plug 'zivyangll/git-blame.vim'
 call plug#end()
 
 " general vim setting "
@@ -34,6 +35,9 @@ match RedundantSpaces /\s\+$/
 " airline status bar setting "
 let g:airline_theme='simple'
 let g:airline#extensions#branch#enabled=1
+
+" show git blame"
+:nnoremap <F7> :<C-u>call gitblame#echo()<CR>
 
 " highlight without searching "
 :nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
