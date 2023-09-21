@@ -18,3 +18,5 @@ curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
 # vim
 #:PlugInstall
 #:CocInstall coc-rust-analyzer
+#:CocInstall coc-clangd
+#:CocCommand clangd.install
