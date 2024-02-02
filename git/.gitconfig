@@ -1,9 +1,9 @@
 [user]
-	name = RinHizakura
+	name = Yiwei Lin
         email = s921975628@gmail.com
 
 [sendemail]
-        from = s921975628@gmail.com
+        from = Yiwei Lin<s921975628@gmail.com>
         smtpserver = smtp.gmail.com
         smtpserverport = 587
         smtpencryption = tls
