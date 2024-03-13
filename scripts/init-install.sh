@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 sudo apt install vim git terminator vim-gtk3 curl \
-    exuberant-ctags cscope gcc make pkg-config clang-format
+    exuberant-ctags cscope gcc make pkg-config \
+    clang-format ripgrep
 
 # vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -19,4 +20,5 @@ curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
 #:PlugInstall
 #:CocInstall coc-rust-analyzer
 #:CocInstall coc-clangd
+#:CocInstall coc-lists
 #:CocCommand clangd.install
