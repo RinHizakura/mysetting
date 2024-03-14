@@ -59,9 +59,6 @@ endif
 
 " cscope setting "
 if has("cscope")
-    " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
-    set cscopetag
-
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
     set csto=0
@@ -125,3 +122,8 @@ endfunction
 
 " Keymapping for grep word under cursor with interactive mode "
 nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+
+" vim-autotags "
+let g:autotags_no_global = 1
+let g:autotags_ctags_langmap = ""
+let g:autotags_cscope_file_extensions = ".h .c .rs"
