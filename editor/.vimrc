@@ -127,3 +127,4 @@ nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep
 let g:autotags_no_global = 1
 let g:autotags_ctags_langmap = ""
 let g:autotags_cscope_file_extensions = ".h .c .rs"
+let g:autotags_ctags_opts = "--c++-kinds=+f --fields=+iaS --extra=+q"
