@@ -15,6 +15,9 @@ nvm install node
 # Rust
 curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
 
+# Install rust-analyzer
+rustup component add rust-analyzer
+
 # Config vim for plugin
 # vim
 #:PlugInstall
