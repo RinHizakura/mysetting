@@ -2,7 +2,7 @@
 
 sudo apt install vim git terminator vim-gtk3 curl \
     exuberant-ctags cscope gcc make pkg-config \
-    clang-format ripgrep
+    clang-format ripgrep clang
 
 # vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
