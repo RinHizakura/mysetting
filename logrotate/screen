@@ -1,0 +1,8 @@
+/home/xxx/screenlog* {
+    rotate 4
+    size 32M
+    dateext
+    missingok
+    compress
+    delaycompress
+}
