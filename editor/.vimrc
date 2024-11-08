@@ -124,6 +124,7 @@ endfunction
 nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 
 " vim-autotags "
+" Note: run :call AutotagsAddPath(path) to add extra files into tag "
 let g:autotags_no_global = 1
 let g:autotags_ctags_langmap = ""
 let g:autotags_cscope_file_extensions = ".h .c .rs"
