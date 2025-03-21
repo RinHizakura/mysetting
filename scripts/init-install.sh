@@ -1,8 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
+sudo apt update
 sudo apt install vim git terminator vim-gtk3 curl \
-    exuberant-ctags cscope gcc make pkg-config \
+    exuberant-ctags cscope gcc make pkg-config    \
     clang-format ripgrep clang
+
+# fish-nvm
+omf install https://github.com/fabioantunes/fish-nvm
+omf install https://github.com/edc/bass
 
 # vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
