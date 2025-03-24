@@ -9,6 +9,9 @@ sudo apt install vim git terminator vim-gtk3 curl \
 omf install https://github.com/fabioantunes/fish-nvm
 omf install https://github.com/edc/bass
 
+# agnoster
+omf install agnoster
+
 # vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
