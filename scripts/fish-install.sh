@@ -2,7 +2,7 @@
 
 sudo apt-add-repository ppa:fish-shell/release-4
 sudo apt update
-sudo apt fish
+sudo apt install fish
 
 # Default the shell to fish
 chsh -s $(which fish)
