@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'basilgor/vim-autotags'
 Plug 'vim-scripts/Mark'
 Plug 'zivyangll/git-blame.vim'
+Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
