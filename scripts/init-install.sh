@@ -33,3 +33,4 @@ rustup component add rust-analyzer
 #:CocInstall coc-clangd
 #:CocInstall coc-lists
 #:CocCommand clangd.install
+#:Copilot setup
