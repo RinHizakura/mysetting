@@ -26,6 +26,13 @@ curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
 # Install rust-analyzer
 rustup component add rust-analyzer
 
+# Install lean-ctx for AI token saving
+# You may want to run `lean-ctx doctor` after this to check if everything
+# is set up correctly, and `source ~/.config/fish/config.fish` to reload
+# the config.
+cargo install lean-ctx
+lean-ctx setup
+
 # Config vim for plugin
 # vim
 #:PlugInstall
