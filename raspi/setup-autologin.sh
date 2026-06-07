@@ -40,47 +40,57 @@ fi
 info "Selected account: $USERNAME"
 echo
 
-# ---- 2. Target console (fixed: PL011 UART serial console ttyAMA0) ----
-SERVICE="serial-getty@ttyAMA0.service"
+# ---- 2. Target consoles (PL011 UART ttyAMA0 + ttyS1) ----
+TTYS=(ttyAMA0 ttyS1)
 GETTY="/sbin/agetty"
-info "Target service: $SERVICE"
+info "Target services: ${TTYS[*]/#/serial-getty@}"
 echo
 
-# ---- 3. Confirm ----
-OVERRIDE_DIR="/etc/systemd/system/${SERVICE}.d"
-OVERRIDE_FILE="${OVERRIDE_DIR}/override.conf"
+# ---- 3. Configure each console ----
+for tty in "${TTYS[@]}"; do
+  SERVICE="serial-getty@${tty}.service"
+  OVERRIDE_DIR="/etc/systemd/system/${SERVICE}.d"
+  OVERRIDE_FILE="${OVERRIDE_DIR}/override.conf"
 
-echo "About to write: ${BOLD}${OVERRIDE_FILE}${RESET}"
-echo "----------------------------------------"
-cat <<EOF
+  echo "About to write: ${BOLD}${OVERRIDE_FILE}${RESET}"
+  echo "----------------------------------------"
+  cat <<EOF
 [Service]
 ExecStart=
 ExecStart=-${GETTY} --autologin ${USERNAME} --noclear %I \$TERM
 EOF
-echo "----------------------------------------"
+  echo "----------------------------------------"
 
-# ---- 4. Back up existing override ----
-if [[ -f "$OVERRIDE_FILE" ]]; then
-  backup="${OVERRIDE_FILE}.bak.$(date +%s)"
-  cp -a "$OVERRIDE_FILE" "$backup"
-  warn "Backed up existing file to $backup"
-fi
+  # Back up existing override
+  if [[ -f "$OVERRIDE_FILE" ]]; then
+    backup="${OVERRIDE_FILE}.bak.$(date +%s)"
+    cp -a "$OVERRIDE_FILE" "$backup"
+    warn "Backed up existing file to $backup"
+  fi
 
-# ---- 5. Write override ----
-mkdir -p "$OVERRIDE_DIR"
-cat > "$OVERRIDE_FILE" <<EOF
+  # Write override
+  mkdir -p "$OVERRIDE_DIR"
+  cat > "$OVERRIDE_FILE" <<EOF
 [Service]
 ExecStart=
 ExecStart=-${GETTY} --autologin ${USERNAME} --noclear %I \$TERM
 EOF
-info "Override file written"
+  info "Override file written for $tty"
 
-# ---- 6. Apply ----
+  # Enable so it starts on next boot even if no override existed before
+  systemctl enable "$SERVICE" >/dev/null 2>&1 || true
+  echo
+done
+
+# ---- 4. Apply ----
 systemctl daemon-reload
-systemctl restart "$SERVICE" || warn "restart failed (normal if it is the tty you are currently using; takes effect after reboot)"
+for tty in "${TTYS[@]}"; do
+  SERVICE="serial-getty@${tty}.service"
+  systemctl restart "$SERVICE" || warn "restart of $SERVICE failed (normal if it is the tty you are currently using; takes effect after reboot)"
+done
 info "Setup complete ✓"
 echo
-echo "Verify:  systemctl cat $SERVICE"
-echo "Revert:  sudo rm $OVERRIDE_FILE && sudo systemctl daemon-reload"
+echo "Verify:  systemctl cat serial-getty@ttyAMA0.service serial-getty@ttyS1.service"
+echo "Revert:  sudo rm /etc/systemd/system/serial-getty@{ttyAMA0,ttyS1}.service.d/override.conf && sudo systemctl daemon-reload"
 echo
 echo "Run ${BOLD}sudo reboot${RESET} to test."
