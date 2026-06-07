@@ -26,6 +26,9 @@ curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
 # Install rust-analyzer
 rustup component add rust-analyzer
 
+# Install claude
+curl -fsSL https://claude.ai | bash
+
 # Install lean-ctx for AI token saving
 # You may want to run `lean-ctx doctor` after this to check if everything
 # is set up correctly, and `source ~/.config/fish/config.fish` to reload
