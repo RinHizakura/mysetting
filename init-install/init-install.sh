@@ -36,6 +36,18 @@ curl -fsSL https://claude.ai/install.sh | bash
 cargo install lean-ctx
 lean-ctx setup
 
+# Install Claude ponytail plugin
+claude plugin marketplace add DietrichGebert/ponytail
+claude plugin install ponytail@ponytail
+
+# Install Claude mattpocock-skills plugin
+claude plugins install mattpocock-skills
+
+# Install Claude i-have-adhd plugin
+claude plugin marketplace add ayghri/i-have-adhd
+claude plugin install i-have-adhd@i-have-adhd
+
+
 # Config vim for plugin
 # vim
 #:PlugInstall
