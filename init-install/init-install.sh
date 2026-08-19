@@ -26,6 +26,14 @@ curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
 # Install rust-analyzer
 rustup component add rust-analyzer
 
+# git-delta
+cargo install git-delta
+git config --global core.pager delta
+git config --global interactive.diffFilter 'delta --color-only'
+git config --global delta.navigate true
+git config --global delta.dark true
+git config --global merge.conflictStyle zdiff3
+
 # Install claude
 curl -fsSL https://claude.ai/install.sh | bash
 
