@@ -32,7 +32,6 @@ git config --global core.pager delta
 git config --global interactive.diffFilter 'delta --color-only'
 git config --global delta.navigate true
 git config --global delta.dark true
-git config --global merge.conflictStyle zdiff3
 
 # Install claude
 curl -fsSL https://claude.ai/install.sh | bash
