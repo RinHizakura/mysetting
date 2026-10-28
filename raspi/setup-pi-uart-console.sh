@@ -11,14 +11,11 @@
 # What it does:
 #   1. Ensure enable_uart=1 and dtoverlay=disable-bt in /boot/firmware/config.txt
 #   2. Ensure console=serial0,115200 in /boot/firmware/cmdline.txt
-#   3. Enable serial-getty@ttyAMA0.service
-#   4. Back up each file before modifying it
-# Idempotent — re-running will not duplicate lines.
+#   3. Back up each file before modifying it
 
 set -euo pipefail
 
 BAUD=115200
-GETTY_DEV="ttyAMA0"          # disable-bt maps the PL011 (ttyAMA0) onto the GPIO
 BOOT_DIR="/boot/firmware"
 CONFIG="${BOOT_DIR}/config.txt"
 CMDLINE="${BOOT_DIR}/cmdline.txt"
@@ -74,19 +71,13 @@ else
     echo "  +   inserted console=serial0,${BAUD} at line start"
 fi
 
-# --- 3. Enable serial-getty -------------------------------------------------
-echo "* Enabling serial-getty@${GETTY_DEV}.service"
-systemctl enable "serial-getty@${GETTY_DEV}.service" >/dev/null 2>&1 || true
-echo "  ok  enabled (takes effect on next boot)"
-
 # --- Done -------------------------------------------------------------------
 cat <<EOF
 
 DONE. Summary:
    - enable_uart=1          (config.txt)
    - dtoverlay=disable-bt   (config.txt - gives PL011 to the GPIO for a stable console)
-   - console=serial0,${BAUD} (cmdline.txt)
-   - serial-getty@${GETTY_DEV} enabled
+   - console=serial0,${BAUD} (cmdline.txt; systemd adds the getty for it at boot)
 
    Backups:
    - ${CONFIG}.bak-${STAMP}
