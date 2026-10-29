@@ -1,5 +1,0 @@
-# QEMU build artifacts (qemu/build_qemu.sh)
-qemu/build_*/
-qemu/install_*/
-# guest rootfs built by qemu/make_rootfs.sh
-qemu/*-rootfs/
