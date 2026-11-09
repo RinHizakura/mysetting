@@ -19,3 +19,10 @@ grep firmware /etc/fstab
 grep -E '^Default(Device)?TimeoutS' /etc/systemd/system.conf
 sudo systemctl daemon-reload
 sudo touch /etc/cloud/cloud-init.disabled
+
+# Background jobs that wake CPUs mid-benchmark: unattended-upgrades, apt, fwupd, man-db,
+# sysstat every 10 min, and the persistent timers that all fire together right after boot.
+sudo systemctl mask --now apt-daily.timer apt-daily-upgrade.timer unattended-upgrades.service \
+  fwupd-refresh.timer fwupd.service man-db.timer update-notifier-download.timer motd-news.timer \
+  sysstat-collect.timer sysstat-summary.timer sysstat-rotate.timer logrotate.timer dpkg-db-backup.timer \
+  e2scrub_all.timer xfs_scrub_all.timer fstrim.timer update-notifier-motd.timer snapd.socket snapd.service
